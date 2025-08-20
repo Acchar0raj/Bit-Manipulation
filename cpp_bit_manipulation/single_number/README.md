@@ -35,6 +35,12 @@ Given a non-empty integer array where every element appears twice except for one
 
 <h3>Example</h3>
 <pre><code>Input: [4, 1, 2, 1, 2]
+1st iteration : 0^4 = 4
+2nd iteration : 4^1 = 5
+3rd iteration : 5^2 = 7
+4th iteration : 7^1 = 6
+5th iteration : 6^2 = 4
+Total number of iteration = Length of the array
 Output: 4
 </code></pre>
 
