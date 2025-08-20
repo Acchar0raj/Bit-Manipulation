@@ -1,54 +1,98 @@
-🔧 Bit Manipulation in C++ and Verilog
+<h1>Bit Manipulation in C++ and Verilog</h1>
 
-This repository contains bit manipulation implementations in both C++ and Verilog.
-It is designed as a reference for competitive programming, embedded systems, and RTL design.
+<p>This repository contains bit manipulation implementations in both C++ and Verilog. It serves as a reference for competitive programming, embedded systems, and RTL design.</p>
 
-📂 Structure
+<h2>📂 Repository Structure</h2>
+<ul>
+  <li><strong>cpp/</strong> — C++ bit manipulation programs</li>
+  <li><strong>verilog/</strong> — Verilog HDL bit manipulation modules</li>
+</ul>
+<p>Each folder includes its own <code>README.md</code> with detailed explanations and usage instructions.</p>
 
-cpp/ → C++ bit manipulation programs
+<hr>
 
-verilog/ → Verilog HDL bit manipulation modules
+<h2>⚡ Bitwise Operators Overview</h2>
+<p>Bit manipulation operates directly on binary digits (bits). Below are the most common bitwise operators:</p>
 
-Each folder has its own README.md with detailed explanations and usage instructions.
+<table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Symbol</th>
+      <th>Description</th>
+      <th>Example (a = 5 (0101), b = 3 (0011))</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AND</td>
+      <td>&amp;</td>
+      <td>1 if both bits are 1, else 0</td>
+      <td>a &amp; b = 0101 &amp; 0011</td>
+      <td>0001 (1)</td>
+    </tr>
+    <tr>
+      <td>OR</td>
+      <td>|</td>
+      <td>1 if any bit is 1</td>
+      <td>a | b = 0101 | 0011</td>
+      <td>0111 (7)</td>
+    </tr>
+    <tr>
+      <td>XOR</td>
+      <td>^</td>
+      <td>1 if bits differ</td>
+      <td>a ^ b = 0101 ^ 0011</td>
+      <td>0110 (6)</td>
+    </tr>
+    <tr>
+      <td>NOT</td>
+      <td>~</td>
+      <td>Bitwise inversion (1 → 0, 0 → 1)</td>
+      <td>~a = ~(0101)</td>
+      <td>Depends on width</td>
+    </tr>
+    <tr>
+      <td>Left Shift</td>
+      <td>&lt;&lt;</td>
+      <td>Shifts bits left, fills with 0</td>
+      <td>a &lt;&lt; 1 = 0101 &lt;&lt; 1</td>
+      <td>1010 (10)</td>
+    </tr>
+    <tr>
+      <td>Right Shift</td>
+      <td>&gt;&gt;</td>
+      <td>Shifts bits right, drops least significant bit (LSB)</td>
+      <td>a &gt;&gt; 1 = 0101 &gt;&gt; 1</td>
+      <td>0010 (2)</td>
+    </tr>
+  </tbody>
+</table>
 
-⚡ Bitwise Operators Overview
+<hr>
 
-Bit manipulation works directly at the binary level. Below are the most common operators:
+<h2>🛠 Common Bit Tricks in C++</h2>
 
-Operator	Symbol	Description	Example (a = 5 = 0101, b = 3 = 0011)	Result
-AND	&	1 if both bits are 1, else 0	a & b = 0101 & 0011	0001 (1)
-OR	|	1 if any bit is 1	a | b = 0101 | 0011	0111 (7)
-XOR	^	1 if bits are different	a ^ b = 0101 ^ 0011	0110 (6)
-NOT	~	Inverts bits (1 → 0, 0 → 1)	~a = ~(0101)	(depends on width)
-Left Shift	<<	Shifts bits left (fills with 0)	a << 1 = 0101 << 1	1010 (10)
-Right Shift	>>	Shifts bits right (drops LSB)	a >> 1 = 0101 >> 1	0010 (2)
-🛠 Common Bit Tricks
+<pre><code>// Check if i-th bit is set
+if (num &amp; (1 &lt;&lt; i)) {
+    // bit is set
+}
 
-Check if i-th bit is set
+// Set i-th bit
+num |= (1 &lt;&lt; i);
 
-if (num & (1 << i)) { /* bit is set */ }
+// Clear i-th bit
+num &amp;= ~(1 &lt;&lt; i);
 
+// Toggle i-th bit
+num ^= (1 &lt;&lt; i);
 
-Set i-th bit
+// Count set bits (population count) - GCC/Clang built-in
+int count = __builtin_popcount(num);
 
-num |= (1 << i);
-
-
-Clear i-th bit
-
-num &= ~(1 << i);
-
-
-Toggle i-th bit
-
-num ^= (1 << i);
-
-
-Count set bits (Population count)
-
-__builtin_popcount(num); // GCC/Clang
-
-
-Check if number is power of 2
-
-if (num > 0 && (num & (num - 1)) == 0) { /* true */ }
+// Check if number is power of 2
+if (num &gt; 0 &amp;&amp; (num &amp; (num - 1)) == 0) {
+    // true: num is a power of 2
+}
+</code></pre>
